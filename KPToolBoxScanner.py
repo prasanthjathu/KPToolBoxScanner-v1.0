@@ -163,17 +163,16 @@ def logo():
     print(bcolors.WARNING)
     logo_ascii = """
                                    """+bcolors.BADFAIL+" ●"+bcolors.WARNING+"""_/
-                                _  __  _____    _______                   _   ____                    _____                                              
+  _  __  _____    _______                   _   ____                    _____                                              
  | |/ / |  __ \  |__   __|                 | | |  _ \                  / ____|                                             
  | ' /  | |__) |    | |      ___     ___   | | | |_) |   ___   __  __ | (___     ___    __ _   _ __    _ __     ___   _ __ 
  |  <   |  ___/     | |     / _ \   / _ \  | | |  _ <   / _ \  \ \/ /  \___ \   / __|  / _` | | '_ \  | '_ \   / _ \ | '__|
  | . \  | |         | |    | (_) | | (_) | | | | |_) | | (_) |  >  <   ____) | | (__  | (_| | | | | | | | | | |  __/ | |   
  |_|\_\ |_|         |_|     \___/   \___/  |_| |____/   \___/  /_/\_\ |_____/   \___|  \__,_| |_| |_| |_| |_|  \___| |_|   
                                      
-                     """+bcolors.ENDC+"""(The Multi-Tool Web Vulnerability Scanner)
+                     """+bcolors.ENDC+"""(The Multi-Tool  Scanner by Prasanth)
 
-                     Check out our new software, """+bcolors.BG_LOW_TXT+"""NetBot"""+bcolors.ENDC+""" for simulating DDoS attacks - https://github.com/skavngr/netbot
-    """
+   
     print(logo_ascii)
     print(bcolors.ENDC)
 
@@ -264,15 +263,10 @@ tool_names = [
                 #8
                 ["nmap","Nmap - Fast Scan [Only Few Port Checks]","nmap",1],
 
-                #9
-                ["theHarvester","The Harvester - Scans for emails using Google's passive search.","theHarvester",1],
-
                 #10
                 ["dnsrecon","DNSRecon - Attempts Multiple Zone Transfers on Nameservers.","dnsrecon",1],
 
-                #11
-                #["fierce","Fierce - Attempts Zone Transfer [No Brute Forcing]","fierce",1],
-
+              
                 #12
                 ["dnswalk","DNSWalk - Attempts Zone Transfer.","dnswalk",1],
 
@@ -354,15 +348,7 @@ tool_names = [
                 #38
                 ["dnsenum_zone_transfer","DNSEnum - Attempts Zone Transfer.","dnsenum",1],
 
-                #39
-                ["fierce_brute_subdomains","Fierce Subdomains Bruter - Brute Forces Subdomain Discovery.","fierce",1],
-
-                #40
-                ["dmitry_email","DMitry - Passively Harvests Emails from the Domain.","dmitry",1],
-
-                #41
-                ["dmitry_subdomains","DMitry - Passively Harvests Subdomains from the Domain.","dmitry",1],
-
+               
                 #42
                 ["nmap_telnet","Nmap [TELNET] - Checks if TELNET service is running.","nmap",1],
 
@@ -374,9 +360,6 @@ tool_names = [
 
                 #45
                 ["webdav","WebDAV - Checks if WEBDAV enabled on Home directory.","davtest",1],
-
-                #46
-                ["golismero_finger","Golismero - Does a fingerprint on the Domain.","golismero",1],
 
                 #47
                 ["uniscan_filebrute","Uniscan - Brutes for Filenames on the Domain.","uniscan",1],
@@ -471,17 +454,9 @@ tool_names = [
                 #77
                 ["nmap_udp_smb","Checks for SMB Service over UDP","nmap",1],
 
-                #78
-                ["wapiti","Wapiti - Checks for SQLi, RCE, XSS and Other Vulnerabilities","wapiti",1],
-
                 #79
                 ["nmap_iis","Nmap - Checks for IIS WebDAV","nmap",1],
 
-                #80
-                ["whatweb","WhatWeb - Checks for X-XSS Protection Header","whatweb",1],
-
-                #81
-                ["amass","AMass - Brutes Domain for Subdomains","amass",1]
             ]
 
 
@@ -505,35 +480,20 @@ tool_cmd   = [
                 #6
                 ["uniscan -e -u ",""],
 
-                #7
-                ["wafw00f ",""],
-
                 #8
                 ["nmap -F --open -Pn ",""],
-
-                #9
-                ["theHarvester -l 50 -b censys -d ",""],
 
                 #10
                 ["dnsrecon -d ",""],
 
-                #11
-                #["fierce -wordlist xxx -dns ",""],
-
                 #12
                 ["dnswalk -d ","."],
-
-                #13
-                ["whois ",""],
 
                 #14
                 ["nmap -p80 --script http-security-headers -Pn ",""],
 
                 #15
                 ["nmap -p80,443 --script http-slowloris --max-parallelism 500 -Pn ",""],
-
-                #16
-                ["sslyze --heartbleed ",""],
 
                 #17
                 ["nmap -p443 --script ssl-heartbleed -Pn ",""],
@@ -549,21 +509,6 @@ tool_cmd   = [
 
                 #21
                 ["nmap -p443 --script ssl-dh-params -Pn ",""],
-
-                #22
-                ["sslyze --certinfo=basic ",""],
-
-                #23
-                ["sslyze --compression ",""],
-
-                #24
-                ["sslyze --reneg ",""],
-
-                #25
-                ["sslyze --resum ",""],
-
-                #26
-                ["lbd ",""],
 
                 #27
                 ["golismero -e dns_malware scan ",""],
@@ -601,15 +546,6 @@ tool_cmd   = [
                 #38
                 ["dnsenum ",""],
 
-                #39
-                ["fierce --domain ",""],
-
-                #40
-                ["dmitry -e ",""],
-
-                #41
-                ["dmitry -s ",""],
-
                 #42
                 ["nmap -p23 --open -Pn ",""],
 
@@ -618,9 +554,6 @@ tool_cmd   = [
 
                 #44
                 ["nmap --script stuxnet-detect -p445 -Pn ",""],
-
-                #45
-                ["davtest -url http://",""],
 
                 #46
                 ["golismero -e fingerprint_web scan ",""],
@@ -718,17 +651,9 @@ tool_cmd   = [
                 #77
                 ["nmap -p137,138 --open -Pn ",""],
 
-                #78
-                ["wapiti "," -f txt -o KPToolBoxScanner_temp_wapiti"],
-
                 #79
                 ["nmap -p80 --script=http-iis-webdav-vuln -Pn ",""],
                 
-                #80
-                ["whatweb "," -a 1"],
-
-                #81
-                ["amass enum -d ",""]
             ]
 
 
@@ -752,14 +677,8 @@ tool_resp   = [
                 #6
                 ["robots.txt/sitemap.xml found. Check those files for any information.","i",6],
 
-                #7
-                ["No Web Application Firewall Detected","m",7],
-
                 #8
                 ["Some ports are open. Perform a full-scan manually.","l",8],
-
-                #9
-                ["Email Addresses Found.","l",9],
 
                 #10
                 ["Zone Transfer Successful using DNSRecon. Reconfigure DNS immediately.","h",10],
@@ -770,17 +689,11 @@ tool_resp   = [
                 #12
                 ["Zone Transfer Successful using dnswalk. Reconfigure DNS immediately.","h",10],
 
-                #13
-                ["Whois Information Publicly Available.","i",11],
-
                 #14
                 ["XSS Protection Filter is Disabled.","m",12],
 
                 #15
                 ["Vulnerable to Slowloris Denial of Service.","c",13],
-
-                #16
-                ["HEARTBLEED Vulnerability Found with SSLyze.","h",14],
 
                 #17
                 ["HEARTBLEED Vulnerability Found with Nmap.","h",14],
@@ -796,21 +709,6 @@ tool_resp   = [
 
                 #21
                 ["LOGJAM Vulnerability Detected.","h",18],
-
-                #22
-                ["Unsuccessful OCSP Response.","m",19],
-
-                #23
-                ["Server supports Deflate Compression.","m",20],
-
-                #24
-                ["Secure Client Initiated Renegotiation is supported.","m",21],
-
-                #25
-                ["Secure Resumption unsupported with (Sessions IDs/TLS Tickets).","m",22],
-
-                #26
-                ["No DNS/HTTP based Load Balancers Found.","l",23],
 
                 #27
                 ["Domain is spoofed/hijacked.","h",24],
@@ -848,15 +746,6 @@ tool_resp   = [
                 #38
                 ["Zone Transfer Successful using DNSEnum. Reconfigure DNS immediately.","h",10],
 
-                #39
-                ["Found Subdomains with Fierce.","m",31],
-
-                #40
-                ["Email Addresses discovered with DMitry.","l",9],
-
-                #41
-                ["Subdomains discovered with DMitry.","m",31],
-
                 #42
                 ["Telnet Service Detected.","h",32],
 
@@ -865,9 +754,6 @@ tool_resp   = [
 
                 #44
                 ["Vulnerable to STUXNET.","c",34],
-
-                #45
-                ["WebDAV Enabled.","m",35],
 
                 #46
                 ["Found some information through Fingerprinting.","l",36],
@@ -965,17 +851,8 @@ tool_resp   = [
                 #77
                 ["SMB Ports are Open over UDP","m",51],
 
-                #78
-                ["Wapiti discovered a range of vulnerabilities","h",30],
-
                 #79
                 ["IIS WebDAV is Enabled","m",35],
-
-                #80
-                ["X-XSS Protection is not Present","m",12],
-
-                #81
-                ["Found Subdomains with AMass","m",31]
 
 
 
@@ -1005,14 +882,8 @@ tool_status = [
                 #6
                 ["[+]",0,proc_low," < 40s","robotscheck",["Use of uninitialized value in unpack at"]],
 
-                #7
-                ["No WAF",0,proc_low," < 45s","wafcheck",["appears to be down"]],
-
                 #8
                 ["tcp open",0,proc_med," <  2m","nmapopen",["Failed to resolve"]],
-
-                #9
-                ["No emails found",1,proc_med," <  3m","harvester",["No hosts found","No emails found"]],
 
                 #10
                 ["[+] Zone Transfer was successful!!",0,proc_low," < 20s","dnsreconzt",["Could not resolve domain"]],
@@ -1023,17 +894,11 @@ tool_status = [
                 #12
                 ["0 errors",0,proc_low," < 35s","dnswalkzt",["!!!0 failures, 0 warnings, 3 errors."]],
 
-                #13
-                ["Admin Email:",0,proc_low," < 25s","whois",["No match for domain"]],
-
                 #14
                 ["XSS filter is disabled",0,proc_low," < 20s","nmapxssh",["Failed to resolve"]],
 
                 #15
                 ["VULNERABLE",0,proc_high," < 45m","nmapdos",["Failed to resolve"]],
-
-                #16
-                ["Server is vulnerable to Heartbleed",0,proc_low," < 40s","sslyzehb",["Could not resolve hostname"]],
 
                 #17
                 ["VULNERABLE",0,proc_low," < 30s","nmap1",["Failed to resolve"]],
@@ -1049,21 +914,6 @@ tool_status = [
 
                 #21
                 ["VULNERABLE",0,proc_low," < 35s","nmap5",["Failed to resolve"]],
-
-                #22
-                ["ERROR - OCSP response status is not successful",0,proc_low," < 25s","sslyze1",["Could not resolve hostname"]],
-
-                #23
-                ["VULNERABLE",0,proc_low," < 30s","sslyze2",["Could not resolve hostname"]],
-
-                #24
-                ["VULNERABLE",0,proc_low," < 25s","sslyze3",["Could not resolve hostname"]],
-
-                #25
-                ["VULNERABLE",0,proc_low," < 30s","sslyze4",["Could not resolve hostname"]],
-
-                #26
-                ["does NOT use Load-balancing",0,proc_med," <  4m","lbd",["NOT FOUND"]],
 
                 #27
                 ["No vulnerabilities found",1,proc_low," < 45s","golism1",["Cannot resolve domain name","No vulnerabilities found"]],
@@ -1101,15 +951,6 @@ tool_status = [
                 #38
                 ["AXFR record query failed:",1,proc_low," < 45s","dnsenumzt",["NS record query failed:","AXFR record query failed","no NS record for"]],
 
-                #39
-                ["Found 0 entries",1,proc_high," < 75m","fierce2",["Found 0 entries","is gimp"]],
-
-                #40
-                ["Found 0 E-Mail(s)",1,proc_low," < 30s","dmitry1",["Unable to locate Host IP addr","Found 0 E-Mail(s)"]],
-
-                #41
-                ["Found 0 possible subdomain(s)",1,proc_low," < 35s","dmitry2",["Unable to locate Host IP addr","Found 0 possible subdomain(s)"]],
-
                 #42
                 ["open",0,proc_low," < 15s","nmaptelnet",["Failed to resolve"]],
 
@@ -1118,9 +959,6 @@ tool_status = [
 
                 #44
                 ["open",0,proc_low," < 20s","nmapstux",["Failed to resolve"]],
-
-                #45
-                ["SUCCEED",0,proc_low," < 30s","webdav",["is not DAV enabled or not accessible."]],
 
                 #46
                 ["No vulnerabilities found",1,proc_low," < 15s","golism10",["Cannot resolve domain name","No vulnerabilities found"]],
@@ -1218,18 +1056,8 @@ tool_status = [
                 #77
                 ["open",0,proc_low," < 20s","nmapudpsmb",["Failed to resolve"]],
 
-                #78
-                ["Host:",0,proc_med," < 5m","wapiti",["none"]],
-
                 #79
                 ["WebDAV is ENABLED",0,proc_low," < 40s","nmapwebdaviis",["Failed to resolve"]],
-
-                #80
-                ["X-XSS-Protection[1",1,proc_med," < 3m","whatweb",["Timed out","Socket error","X-XSS-Protection[1"]],
-
-                #81
-                ["No names were discovered",1,proc_med," < 15m","amass",["The system was unable to build the pool of resolvers"]]
-
 
 
             ]
