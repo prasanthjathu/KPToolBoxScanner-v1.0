@@ -12,11 +12,11 @@ README = (HERE / "README.md").read_text()
 setup(
     name                =   "KPToolBoxScanner",
     version             =   '1.0',
-    description         =   "The Multi-Tool Web Vulnerability Scanner.",
+    description         =   "The Multi-Tool Scanner.",
     long_description    =   README,
     long_description_content_type = "text/markdown",
     url                 =   "https://github.com/prasanthjathu/toolbox.git",
-    author              =   "sh4nx0r",
+    author              =   "Prasanth",
     py_modules          =   ['KPToolBoxScanner',],
     install_requires    =   [],
     python_requires=">=3.6",
