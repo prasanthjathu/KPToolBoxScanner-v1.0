@@ -162,7 +162,7 @@ def clear():
 def logo():
     print(bcolors.WARNING)
     logo_ascii = """
-                                   """+bcolors.BADFAIL+" ●"+bcolors.WARNING+"""_/
+                                   
   _  __  _____    _______                   _   ____                    _____                                              
  | |/ / |  __ \  |__   __|                 | | |  _ \                  / ____|                                             
  | ' /  | |__) |    | |      ___     ___   | | | |_) |   ___   __  __ | (___     ___    __ _   _ __    _ __     ___   _ __ 
