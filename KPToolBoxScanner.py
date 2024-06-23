@@ -252,9 +252,6 @@ tool_names = [
                 #5
                 ["joom_check", "Joomla Checker - Checks for Joomla Installation.","wget",1],
 
-                #6
-                ["uniscan","Uniscan - Checks for robots.txt & sitemap.xml","uniscan",1],
-
                 #7
                 ["wafw00f","Wafw00f - Checks for Application Firewalls.","wafw00f",1],
 
@@ -306,14 +303,8 @@ tool_names = [
                 #26
                 ["lbd","LBD - Checks for DNS/HTTP Load Balancers.","lbd",1],
 
-                #27
-                ["golismero_dns_malware","Golismero - Checks if the domain is spoofed or hijacked.","golismero",1],
-
                 #32
                 ["dirb","DirB - Brutes the target for Open Directories.","dirb",1],
-
-                #33
-                ["xsser","XSSer - Checks for Cross-Site Scripting [XSS] Attacks.","xsser",1],
 
                 #38
                 ["dnsenum_zone_transfer","DNSEnum - Attempts Zone Transfer.","dnsenum",1],
@@ -430,9 +421,6 @@ tool_cmd   = [
                 #5
                 ["wget -O /tmp/KPToolBoxScanner_temp_joom_check --tries=1 ","/administrator"],
 
-                #6
-                ["uniscan -e -u ",""],
-
                 #8
                 ["nmap -F --open -Pn ",""],
 
@@ -462,9 +450,6 @@ tool_cmd   = [
 
                 #32
                 ["dirb http://"," -fi"],
-
-                #33
-                ["xsser --all=http://",""],
 
                 #38
                 ["dnsenum ",""],
@@ -619,10 +604,6 @@ tool_resp   = [
                 #32
                 ["Open Directories Found with DirB.","m",26],
 
-                #33
-                ["XSSer found XSS vulnerabilities.","c",28],
-
-
                 #38
                 ["Zone Transfer Successful using DNSEnum. Reconfigure DNS immediately.","h",10],
 
@@ -776,10 +757,7 @@ tool_status = [
   
                 #32
                 ["FOUND: 0",1,proc_high," < 35m","dirb",["COULDNT RESOLVE HOST","FOUND: 0"]],
-
-                #33
-                ["Could not find any vulnerability!",1,proc_med," <  4m","xsser",["XSSer is not working propertly!","Could not find any vulnerability!"]],
-
+  
                 #38
                 ["AXFR record query failed:",1,proc_low," < 45s","dnsenumzt",["NS record query failed:","AXFR record query failed","no NS record for"]],
 
@@ -792,21 +770,6 @@ tool_status = [
                 #44
                 ["open",0,proc_low," < 20s","nmapstux",["Failed to resolve"]],
   
-                #47
-                ["[+]",0,proc_med," <  2m","uniscan2",["Use of uninitialized value in unpack at"]],
-
-                #48
-                ["[+]",0,proc_med," <  5m","uniscan3",["Use of uninitialized value in unpack at"]],
-
-                #49
-                ["[+]",0,proc_med," <  9m","uniscan4",["Use of uninitialized value in unpack at"]],
-
-                #50
-                ["[+]",0,proc_med," <  8m","uniscan5",["Use of uninitialized value in unpack at"]],
-
-                #51
-                ["[+]",0,proc_med," <  9m","uniscan6",["Use of uninitialized value in unpack at"]],
-
                 #52
                 ["0 item(s) reported",1,proc_low," < 35s","nikto1",["ERROR: Cannot resolve hostname","0 item(s) reported","No web server found","0 host(s) tested"]],
 
@@ -978,7 +941,7 @@ tools_fix = [
 
 # Tool Set
 tools_precheck = [
-                    ["wapiti"], ["whatweb"], ["nmap"], ["golismero"], ["host"], ["wget"], ["uniscan"], ["wafw00f"], ["dirb"], ["davtest"], ["theHarvester"], ["xsser"], ["dnsrecon"],["fierce"], ["dnswalk"], ["whois"], ["sslyze"], ["lbd"], ["golismero"], ["dnsenum"],["dmitry"], ["davtest"], ["nikto"], ["dnsmap"], ["amass"]
+                    ["wapiti"], ["whatweb"], ["nmap"], ["host"], ["wget"], ["wafw00f"], ["dirb"], ["davtest"], ["theHarvester"], ["dnsrecon"],["fierce"], ["dnswalk"], ["whois"], ["sslyze"], ["lbd"], ["dnsenum"],["dmitry"], ["davtest"], ["nikto"], ["dnsmap"], ["amass"]
                  ]
 
 def get_parser():
