@@ -158,6 +158,7 @@ def clear():
         sys.stdout.write("\033[F")
         sys.stdout.write("\033[K") #clears until EOL
 
+
 # KPToolBoxScanner Logo
 def logo():
     print(bcolors.WARNING)
@@ -170,12 +171,9 @@ def logo():
  | . \  | |         | |    | (_) | | (_) | | | | |_) | | (_) |  >  <   ____) | | (__  | (_| | | | | | | | | | |  __/ | |   
  |_|\_\ |_|         |_|     \___/   \___/  |_| |____/   \___/  /_/\_\ |_____/   \___|  \__,_| |_| |_| |_| |_|  \___| |_|   
                                      
-                     
-
-   
+"""
     print(logo_ascii)
     print(bcolors.ENDC)
-
 
 # Initiliazing the idle loader/spinner class
 class Spinner:
