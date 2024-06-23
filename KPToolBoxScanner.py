@@ -264,10 +264,6 @@ tool_names = [
                 #10
                 ["dnsrecon","DNSRecon - Attempts Multiple Zone Transfers on Nameservers.","dnsrecon",1],
 
-              
-                #12
-                ["dnswalk","DNSWalk - Attempts Zone Transfer.","dnswalk",1],
-
                 #13
                 ["whois","WHOis - Checks for Administrator's Contact Information.","whois",1],
 
@@ -313,35 +309,11 @@ tool_names = [
                 #27
                 ["golismero_dns_malware","Golismero - Checks if the domain is spoofed or hijacked.","golismero",1],
 
-                #28
-                ["golismero_heartbleed","Golismero - Checks only for Heartbleed Vulnerability.","golismero",1],
-
-                #29
-                ["golismero_brute_url_predictables","Golismero - BruteForces for certain files on the Domain.","golismero",1],
-
-                #30
-                ["golismero_brute_directories","Golismero - BruteForces for certain directories on the Domain.","golismero",1],
-
-                #31
-                ["golismero_sqlmap","Golismero - SQLMap [Retrieves only the DB Banner]","golismero",1],
-
                 #32
                 ["dirb","DirB - Brutes the target for Open Directories.","dirb",1],
 
                 #33
                 ["xsser","XSSer - Checks for Cross-Site Scripting [XSS] Attacks.","xsser",1],
-
-                #34
-                ["golismero_ssl_scan","Golismero SSL Scans - Performs SSL related Scans.","golismero",1],
-
-                #35
-                ["golismero_zone_transfer","Golismero Zone Transfer - Attempts Zone Transfer.","golismero",1],
-
-                #36
-                ["golismero_nikto","Golismero Nikto Scans - Uses Nikto Plugin to detect vulnerabilities.","golismero",1],
-
-                #37
-                ["golismero_brute_subdomains","Golismero Subdomains Bruter - Brute Forces Subdomain Discovery.","golismero",1],
 
                 #38
                 ["dnsenum_zone_transfer","DNSEnum - Attempts Zone Transfer.","dnsenum",1],
@@ -358,21 +330,6 @@ tool_names = [
 
                 #45
                 ["webdav","WebDAV - Checks if WEBDAV enabled on Home directory.","davtest",1],
-
-                #47
-                ["uniscan_filebrute","Uniscan - Brutes for Filenames on the Domain.","uniscan",1],
-
-                #48
-                ["uniscan_dirbrute", "Uniscan - Brutes Directories on the Domain.","uniscan",1],
-
-                #49
-                ["uniscan_ministresser", "Uniscan - Stress Tests the Domain.","uniscan",1],
-
-                #50
-                ["uniscan_rfi","Uniscan - Checks for LFI, RFI and RCE.","uniscan",1],
-
-                #51
-                ["uniscan_xss","Uniscan - Checks for XSS, SQLi, BSQLi & Other Checks.","uniscan",1],
 
                 #52
                 ["nikto_xss","Nikto - Checks for Apache Expect XSS Header.","nikto",1],
@@ -416,8 +373,6 @@ tool_names = [
                 #65
                 ["nikto_paths","Nikto - Checks for Injectable Paths.","nikto",1],
 
-                #66
-                ["dnsmap_brute","DNSMap - Brutes Subdomains.","dnsmap",1],
 
                 #67
                 ["nmap_sqlserver","Nmap - Checks for MS-SQL Server DB","nmap",1],
@@ -484,9 +439,6 @@ tool_cmd   = [
                 #10
                 ["dnsrecon -d ",""],
 
-                #12
-                ["dnswalk -d ","."],
-
                 #14
                 ["nmap -p80 --script http-security-headers -Pn ",""],
 
@@ -508,38 +460,11 @@ tool_cmd   = [
                 #21
                 ["nmap -p443 --script ssl-dh-params -Pn ",""],
 
-                #27
-                ["golismero -e dns_malware scan ",""],
-
-                #28
-                ["golismero -e heartbleed scan ",""],
-
-                #29
-                ["golismero -e brute_url_predictables scan ",""],
-
-                #30
-                ["golismero -e brute_directories scan ",""],
-
-                #31
-                ["golismero -e sqlmap scan ",""],
-
                 #32
                 ["dirb http://"," -fi"],
 
                 #33
                 ["xsser --all=http://",""],
-
-                #34
-                ["golismero -e sslscan scan ",""],
-
-                #35
-                ["golismero -e zone_transfer scan ",""],
-
-                #36
-                ["golismero -e nikto scan ",""],
-
-                #37
-                ["golismero -e brute_dns scan ",""],
 
                 #38
                 ["dnsenum ",""],
@@ -552,24 +477,6 @@ tool_cmd   = [
 
                 #44
                 ["nmap --script stuxnet-detect -p445 -Pn ",""],
-
-                #46
-                ["golismero -e fingerprint_web scan ",""],
-
-                #47
-                ["uniscan -w -u ",""],
-
-                #48
-                ["uniscan -q -u ",""],
-
-                #49
-                ["uniscan -r -u ",""],
-
-                #50
-                ["uniscan -s -u ",""],
-
-                #51
-                ["uniscan -d -u ",""],
 
                 #52
                 ["nikto -Plugins 'apache_expect_xss' -host ",""],
@@ -612,9 +519,6 @@ tool_cmd   = [
 
                 #65
                 ["nikto -Plugins 'paths' -host ",""],
-
-                #66
-                ["dnsmap ",""],
 
                 #67
                 ["nmap -p1433 --open -Pn ",""],
@@ -684,9 +588,6 @@ tool_resp   = [
                 #11
                 #["Zone Transfer Successful using fierce. Reconfigure DNS immediately.","h",10],
 
-                #12
-                ["Zone Transfer Successful using dnswalk. Reconfigure DNS immediately.","h",10],
-
                 #14
                 ["XSS Protection Filter is Disabled.","m",12],
 
@@ -711,14 +612,6 @@ tool_resp   = [
                 #27
                 ["Domain is spoofed/hijacked.","h",24],
 
-                #28
-                ["HEARTBLEED Vulnerability Found with Golismero.","h",14],
-
-                #29
-                ["Open Files Found with Golismero BruteForce.","m",25],
-
-                #30
-                ["Open Directories Found with Golismero BruteForce.","m",26],
 
                 #31
                 ["DB Banner retrieved with SQLMap.","l",27],
@@ -729,17 +622,6 @@ tool_resp   = [
                 #33
                 ["XSSer found XSS vulnerabilities.","c",28],
 
-                #34
-                ["Found SSL related vulnerabilities with Golismero.","m",29],
-
-                #35
-                ["Zone Transfer Successful with Golismero. Reconfigure DNS immediately.","h",10],
-
-                #36
-                ["Golismero Nikto Plugin found vulnerabilities.","m",30],
-
-                #37
-                ["Found Subdomains with Golismero.","m",31],
 
                 #38
                 ["Zone Transfer Successful using DNSEnum. Reconfigure DNS immediately.","h",10],
@@ -752,24 +634,6 @@ tool_resp   = [
 
                 #44
                 ["Vulnerable to STUXNET.","c",34],
-
-                #46
-                ["Found some information through Fingerprinting.","l",36],
-
-                #47
-                ["Open Files Found with Uniscan.","m",25],
-
-                #48
-                ["Open Directories Found with Uniscan.","m",26],
-
-                #49
-                ["Vulnerable to Stress Tests.","h",37],
-
-                #50
-                ["Uniscan detected possible LFI, RFI or RCE.","h",38],
-
-                #51
-                ["Uniscan detected possible XSS, SQLi, BSQLi.","h",39],
 
                 #52
                 ["Apache Expect XSS Header not present.","m",12],
@@ -812,9 +676,6 @@ tool_resp   = [
 
                 #65
                 ["Injectable Paths Detected.","l",46],
-
-                #66
-                ["Found Subdomains with DNSMap.","m",31],
 
                 #67
                 ["MS-SQL DB Service Detected.","l",47],
@@ -912,39 +773,12 @@ tool_status = [
 
                 #21
                 ["VULNERABLE",0,proc_low," < 35s","nmap5",["Failed to resolve"]],
-
-                #27
-                ["No vulnerabilities found",1,proc_low," < 45s","golism1",["Cannot resolve domain name","No vulnerabilities found"]],
-
-                #28
-                ["No vulnerabilities found",1,proc_low," < 40s","golism2",["Cannot resolve domain name","No vulnerabilities found"]],
-
-                #29
-                ["No vulnerabilities found",1,proc_low," < 45s","golism3",["Cannot resolve domain name","No vulnerabilities found"]],
-
-                #30
-                ["No vulnerabilities found",1,proc_low," < 40s","golism4",["Cannot resolve domain name","No vulnerabilities found"]],
-
-                #31
-                ["No vulnerabilities found",1,proc_low," < 45s","golism5",["Cannot resolve domain name","No vulnerabilities found"]],
-
+  
                 #32
                 ["FOUND: 0",1,proc_high," < 35m","dirb",["COULDNT RESOLVE HOST","FOUND: 0"]],
 
                 #33
                 ["Could not find any vulnerability!",1,proc_med," <  4m","xsser",["XSSer is not working propertly!","Could not find any vulnerability!"]],
-
-                #34
-                ["Occurrence ID",0,proc_low," < 45s","golism6",["Cannot resolve domain name"]],
-
-                #35
-                ["DNS zone transfer successful",0,proc_low," < 30s","golism7",["Cannot resolve domain name"]],
-
-                #36
-                ["Nikto found 0 vulnerabilities",1,proc_med," <  4m","golism8",["Cannot resolve domain name","Nikto found 0 vulnerabilities"]],
-
-                #37
-                ["Possible subdomain leak",0,proc_high," < 30m","golism9",["Cannot resolve domain name"]],
 
                 #38
                 ["AXFR record query failed:",1,proc_low," < 45s","dnsenumzt",["NS record query failed:","AXFR record query failed","no NS record for"]],
@@ -957,10 +791,7 @@ tool_status = [
 
                 #44
                 ["open",0,proc_low," < 20s","nmapstux",["Failed to resolve"]],
-
-                #46
-                ["No vulnerabilities found",1,proc_low," < 15s","golism10",["Cannot resolve domain name","No vulnerabilities found"]],
-
+  
                 #47
                 ["[+]",0,proc_med," <  2m","uniscan2",["Use of uninitialized value in unpack at"]],
 
@@ -1017,10 +848,7 @@ tool_status = [
 
                 #65
                 ["0 item(s) reported",1,proc_low," < 35s","nikto14","ERROR: Cannot resolve hostname , 0 item(s) reported"],
-
-                #66
-                ["#1",0,proc_high," < 30m","dnsmap_brute",["[+] 0 (sub)domains and 0 IP address(es) found"]],
-
+  
                 #67
                 ["open",0,proc_low," < 15s","nmapmssql",["Failed to resolve"]],
 
@@ -1116,26 +944,10 @@ tools_fix = [
                             "It is recommended to block or restrict access to these directories unless necessary."],
                     [27, "May not be SQLi vulnerable. An attacker will be able to know that the host is using a backend for operation.",
                             "Banner Grabbing should be restricted and access to the services from outside would should be made minimum."],
-                    [28, "An attacker will be able to steal cookies, deface web application or redirect to any third party address that can serve malware.",
-                            "Input validation and Output Sanitization can completely prevent Cross Site Scripting (XSS) attacks. XSS attacks can be mitigated in future by properly following a secure coding methodology. The following comprehensive resource provides detailed information on fixing this vulnerability. https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet"],
-                    [29, "SSL related vulnerabilities breaks the confidentiality factor. An attacker may perform a MiTM attack, intrepret and eavesdrop the communication.",
-                            "Proper implementation and upgraded version of SSL and TLS libraries are very critical when it comes to blocking SSL related vulnerabilities."],
-                    [30, "Particular Scanner found multiple vulnerabilities that an attacker may try to exploit the target.",
-                            "Refer to RS-Vulnerability-Report to view the complete information of the vulnerability, once the scan gets completed."],
-                    [31, "Attackers may gather more information from subdomains relating to the parent domain. Attackers may even find other services from the subdomains and try to learn the architecture of the target. There are even chances for the attacker to find vulnerabilities as the attack surface gets larger with more subdomains discovered.",
-                            "It is sometimes wise to block sub domains like development, staging to the outside world, as it gives more information to the attacker about the tech stack. Complex naming practices also help in reducing the attack surface as attackers find hard to perform subdomain bruteforcing through dictionaries and wordlists."],
                     [32, "Through this deprecated protocol, an attacker may be able to perform MiTM and other complicated attacks.",
                             "It is highly recommended to stop using this service and it is far outdated. SSH can be used to replace TELNET. For more information, check this resource https://www.ssh.com/ssh/telnet"],
                     [33, "This protocol does not support secure communication and there are likely high chances for the attacker to eavesdrop the communication. Also, many FTP programs have exploits available in the web such that an attacker can directly crash the application or either get a SHELL access to that target.",
                             "Proper suggested fix is use an SSH protocol instead of FTP. It supports secure communication and chances for MiTM attacks are quite rare."],
-                    [34, "The StuxNet is level-3 worm that exposes critical information of the target organization. It was a cyber weapon that was designed to thwart the nuclear intelligence of Iran. Seriously wonder how it got here? Hope this isn't a false positive Nmap ;)",
-                            "It is highly recommended to perform a complete rootkit scan on the host. For more information refer to this resource. https://www.symantec.com/security_response/writeup.jsp?docid=2010-071400-3123-99&tabid=3"],
-                    [35, "WebDAV is supposed to contain multiple vulnerabilities. In some case, an attacker may hide a malicious DLL file in the WebDAV share however, and upon convincing the user to open a perfectly harmless and legitimate file, execute code under the context of that user",
-                            "It is recommended to disable WebDAV. Some critical resource regarding disbling WebDAV can be found on this URL. https://www.networkworld.com/article/2202909/network-security/-webdav-is-bad---says-security-researcher.html"],
-                    [36, "Attackers always do a fingerprint of any server before they launch an attack. Fingerprinting gives them information about the server type, content- they are serving, last modification times etc, this gives an attacker to learn more information about the target",
-                            "A good practice is to obfuscate the information to outside world. Doing so, the attackers will have tough time understanding the server's tech stack and therefore leverage an attack."],
-                    [37, "Attackers mostly try to render web applications or service useless by flooding the target, such that blocking access to legitimate users. This may affect the business of a company or organization as well as the reputation",
-                            "By ensuring proper load balancers in place, configuring rate limits and multiple connection restrictions, such attacks can be drastically mitigated."],
                     [38, "Intruders will be able to remotely include shell files and will be able to access the core file system or they will be able to read all the files as well. There are even higher chances for the attacker to remote execute code on the file system.",
                             "Secure code practices will mostly prevent LFI, RFI and RCE attacks. The following resource gives a detailed insight on secure coding practices. https://wiki.sei.cmu.edu/confluence/display/seccode/Top+10+Secure+Coding+Practices"],
                     [39, "Hackers will be able to steal data from the backend and also they can authenticate themselves to the website and can impersonate as any user since they have total control over the backend. They can even wipe out the entire database. Attackers can also steal cookie information of an authenticated user and they can even redirect the target to any malicious address or totally deface the application.",
@@ -1152,8 +964,6 @@ tools_fix = [
                             "Microsoft has released a set of patches on their website to mitigate this issue. The information required to fix this vulnerability can be inferred from this resource. https://docs.microsoft.com/en-us/security-updates/securitybulletins/2010/ms10-070"],
                     [45, "Any outdated web server may contain multiple vulnerabilities as their support would've been ended. An attacker may make use of such an opportunity to leverage attacks.",
                             "It is highly recommended to upgrade the web server to the available latest version."],
-                    [46, "Hackers will be able to manipulate the URLs easily through a GET/POST request. They will be able to inject multiple attack vectors in the URL with ease and able to monitor the response as well",
-                            "By ensuring proper sanitization techniques and employing secure coding practices it will be impossible for the attacker to penetrate through. The following resource gives a detailed insight on secure coding practices. https://wiki.sei.cmu.edu/confluence/display/seccode/Top+10+Secure+Coding+Practices"],
                     [47, "Since the attacker has knowledge about the particular type of backend the target is running, they will be able to launch a targetted exploit for the particular version. They may also try to authenticate with default credentials to get themselves through.",
                             "Timely security patches for the backend has to be installed. Default credentials has to be changed. If possible, the banner information can be changed to mislead the attacker. The following resource gives more information on how to secure your backend. http://kb.bodhost.com/secure-database-server/"],
                     [48, "Attackers may launch remote exploits to either crash the service or tools like ncrack to try brute-forcing the password on the target.",
