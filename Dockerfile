@@ -11,11 +11,8 @@ RUN apt-get -yq install \
       python3 \
       nmap \
       dnsenum \
-      dnsmap \
       dnsrecon \
-      dnswalk \
       nikto \
-      uniscan \
     apt-get -yq autoremove && \
     apt-get clean && \
     rm -rf /var/lib/{apt,dpkg,cache,log}
