@@ -117,13 +117,16 @@ proc_med  = bcolors.WARNING + "●" + bcolors.ENDC
 proc_low  = bcolors.OKGREEN + "●" + bcolors.ENDC
 
 # Links the vulnerability with threat level and remediation database
-def vul_remed_info(v1,v2,v3):
-    print(bcolors.BOLD+"Vulnerability Threat Level"+bcolors.ENDC)
-    print("\t"+vul_info(v2)+" "+bcolors.WARNING+str(tool_resp[v1][0])+bcolors.ENDC)
-    print(bcolors.BOLD+"Vulnerability Definition"+bcolors.ENDC)
-    print("\t"+bcolors.BADFAIL+str(tools_fix[v3-1][1])+bcolors.ENDC)
-    print(bcolors.BOLD+"Vulnerability Remediation"+bcolors.ENDC)
-    print("\t"+bcolors.OKGREEN+str(tools_fix[v3-1][2])+bcolors.ENDC)
+def vul_remed_info(tool, resp, fix):
+    print("\n\tRemediation Information for "+bcolors.OKBLUE+tool+bcolors.ENDC+" :\n")
+    for v3 in range(1, len(resp)+1):
+        print("\t"+bcolors.OKGREEN+str(resp[v3-1])+bcolors.ENDC)
+        try:
+            print("\t"+bcolors.BADFAIL+str(tools_fix[v3-1][1])+bcolors.ENDC)
+        except IndexError:
+            print("\t"+bcolors.WARNING+"Error: No fix information available for this vulnerability."+bcolors.ENDC)
+    print("\n")
+
 
 
 # KPToolBoxScanner Help Context
