@@ -1,3 +1,16 @@
+
+print("Interface de sécurité")
+print("1. Configuration")
+print("2. Découverte de ports, de services et Détection de vulnérabilités")
+print("3. Analyse de la sécurité des mots de passe")
+print("4. Tests d'authentification")
+print("5. Exploitation de vulnérabilités")
+print("6. Post-exploitation")
+print("7. Reporting")
+print("8. Vérification payload")
+print("9. Quitter")
+
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #                                      
@@ -1145,56 +1158,43 @@ elif args_namespace.target:
     print("\n")
 
     #################### Report & Documentation Phase ###########################
-    from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
-import os
+    date = subprocess.Popen(["date", "+%Y-%m-%d"],stdout=subprocess.PIPE).stdout.read()[:-1].decode("utf-8")
+    debuglog = "rs.dbg.%s.%s" % (target, date) 
+    vulreport = "rs.vul.%s.%s" % (target, date)
+    print(bcolors.BG_HEAD_TXT+"[ Report Generation Phase Initiated. ]"+bcolors.ENDC)
+    if len(rs_vul_list)==0:
+        print("\t"+bcolors.OKGREEN+"No Vulnerabilities Detected."+bcolors.ENDC)
+    else:
+        with open(vulreport, "a") as report:
+            while(rs_vul < len(rs_vul_list)):
+                vuln_info = rs_vul_list[rs_vul].split('*')
+                report.write(vuln_info[arg2])
+                report.write("\n------------------------\n\n")
+                temp_report_name = "/tmp/KPToolBoxScanner_temp_"+vuln_info[arg1]
+                with open(temp_report_name, 'r') as temp_report:
+                    data = temp_report.read()
+                    report.write(data)
+                    report.write("\n\n")
+                temp_report.close()
+                rs_vul = rs_vul + 1
 
-# Function to generate PDF report
-def generate_pdf_report(report_content, output_path):
-    c = canvas.Canvas(output_path, pagesize=letter)
-    width, height = letter
-    c.setFont("Helvetica", 12)
-    
-    # Set starting position
-    y = height - 40
-    
-    for line in report_content:
-        c.drawString(30, y, line)
-        y -= 15
-        if y < 40:
-            c.showPage()
-            c.setFont("Helvetica", 12)
-            y = height - 40
-    
-    c.save()
+            print("\tComplete Vulnerability Report for "+bcolors.OKBLUE+target+bcolors.ENDC+" named "+bcolors.OKGREEN+vulreport+bcolors.ENDC+" is available under the same directory KPToolBoxScanner resides.")
 
-# Example function to simulate scanning and return report content
-def perform_scans():
-    # This function should contain the actual scanning logic
-    # Here is a placeholder for the scanned data
-    scanned_data = [
-        "KPToolBoxScanner Report",
-        "========================",
-        "Example entry 1: details...",
-        "Example entry 2: details...",
-    ]
-    return scanned_data
-
-def main():
-    # Perform scans and get report content
-    report_content = perform_scans()
-    
-    # Define the output PDF path
-    output_pdf_path = "/app/report.pdf"
-    
-    # Generate the PDF report
-    generate_pdf_report(report_content, output_pdf_path)
-    
-    print(f"Report generated and saved to {output_pdf_path}")
-
-if __name__ == "__main__":
-    main()
-
+        report.close()
+    # Writing all scan files output into RS-Debug-ScanLog for debugging purposes.
+    for file_index, file_name in enumerate(tool_names):
+        with open(debuglog, "a") as report:
+            try:
+                with open("/tmp/KPToolBoxScanner_temp_"+file_name[arg1], 'r') as temp_report:
+                        data = temp_report.read()
+                        report.write(file_name[arg2])
+                        report.write("\n------------------------\n\n")
+                        report.write(data)
+                        report.write("\n\n")
+                temp_report.close()
+            except:
+                break
+        report.close()
 
     print("\tTotal Number of Vulnerability Checks        : "+bcolors.BOLD+bcolors.OKGREEN+str(len(tool_names))+bcolors.ENDC)
     print("\tTotal Number of Vulnerability Checks Skipped: "+bcolors.BOLD+bcolors.WARNING+str(rs_skipped_checks)+bcolors.ENDC)
