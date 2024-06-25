@@ -1146,118 +1146,63 @@ elif args_namespace.target:
     print(bcolors.BG_ENDL_TXT+"[ Preliminary Scan Phase Completed. ]"+bcolors.ENDC)
     print("\n")
 
-    #################### Report & Documentation Phase ###########################
-from fpdf import FPDF
-import subprocess
-import os
-
-class bcolors:
-    BG_HEAD_TXT = '\033[95m'
-    ENDC = '\033[0m'
-    OKGREEN = '\033[92m'
-    OKBLUE = '\033[94m'
-    WARNING = '\033[93m'
-    BADFAIL = '\033[91m'
-    BOLD = '\033[1m'
-    BG_ENDL_TXT = '\033[96m'
-
-def display_time(seconds, granularity=3):
-    intervals = (
-        ('h', 3600),
-        ('m', 60),
-        ('s', 1),
-    )
-    result = []
-    seconds = seconds + 1
-    for name, count in intervals:
-        value = seconds // count
-        if value:
-            seconds -= value * count
-            result.append("{}{}".format(value, name))
-    return ' '.join(result[:granularity])
-
-def create_pdf_report(report_content, output_file):
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size=12)
-    
-    for line in report_content.split('\n'):
-        pdf.cell(200, 10, txt=line, ln=True, align='L')
-    
-    pdf.output(output_file)
-
-# Assuming these variables are properly initialized and populated in your existing scanning process
-rs_vul_list = ["nmap_logjam*LOGJAM Vulnerability detected in the scan result"]  # List of vulnerabilities
-tool_names = ["nmap_logjam"]  # List of tool names used in the scan
-target = "192.168.1.153"  # Example target
-arg1 = 0  # Example index for vulnerability ID
-arg2 = 1  # Example index for vulnerability description
-rs_skipped_checks = 0  # Number of skipped checks
-rs_total_elapsed = 3600  # Total elapsed time in seconds
-
-# Simulate the creation of temporary files for demonstration
-for vuln in rs_vul_list:
-    vuln_info = vuln.split('*')
-    temp_report_name = f"/tmp/KPToolBoxScanner_temp_{vuln_info[arg1]}"
-    with open(temp_report_name, 'w') as temp_report:
-        temp_report.write(f"Detailed information about {vuln_info[arg1]}:\n")
-        temp_report.write(f"{vuln_info[arg2]}")
-
-# Collecting report content
-report_content = []
-
-# Generate the date and filenames
+#################### Report & Documentation Phase ###########################
 date = subprocess.Popen(["date", "+%Y-%m-%d"], stdout=subprocess.PIPE).stdout.read()[:-1].decode("utf-8")
-debuglog = f"rs.dbg.{target}.{date}"
-vulreport = f"rs.vul.{target}.{date}"
+debuglog = "rs.dbg.%s.%s" % (target, date) 
+vulreport = "rs.vul.%s.%s" % (target, date)
+print(bcolors.BG_HEAD_TXT + "[ Report Generation Phase Initiated. ]" + bcolors.ENDC)
 
-report_content.append(f"[ Report Generation Phase Initiated. ]")
 if len(rs_vul_list) == 0:
-    report_content.append("\tNo Vulnerabilities Detected.")
+    print("\t" + bcolors.OKGREEN + "No Vulnerabilities Detected." + bcolors.ENDC)
 else:
-    rs_vul = 0  # Initialize the vulnerability counter
-    while rs_vul < len(rs_vul_list):
-        vuln_info = rs_vul_list[rs_vul].split('*')
-        report_content.append(f"Vulnerability ID: {vuln_info[arg1]}")
-        report_content.append(f"Description: {vuln_info[arg2]}")
-        report_content.append("------------------------")
-        temp_report_name = f"/tmp/KPToolBoxScanner_temp_{vuln_info[arg1]}"
-        if os.path.exists(temp_report_name):
+    with open(vulreport, "a") as report:
+        while rs_vul < len(rs_vul_list):
+            vuln_info = rs_vul_list[rs_vul].split('*')
+            report.write(vuln_info[arg2])
+            report.write("\n------------------------\n\n")
+            temp_report_name = "/tmp/KPToolBoxScanner_temp_" + vuln_info[arg1]
             with open(temp_report_name, 'r') as temp_report:
                 data = temp_report.read()
-                report_content.append(data)
-                report_content.append("\n\n")
-        else:
-            missing_file_msg = f"Error: {temp_report_name} does not exist."
-            report_content.append(missing_file_msg)
-            report_content.append("\n\n")
-        rs_vul += 1
+                report.write(data)
+                report.write("\n\n")
+            temp_report.close()
+            rs_vul = rs_vul + 1
 
-report_content.append(f"[ Report Generation Phase Completed. ]")
+        print("\tComplete Vulnerability Report for " + bcolors.OKBLUE + target + bcolors.ENDC + " named " + bcolors.OKGREEN + vulreport + bcolors.ENDC + " is available under the same directory KPToolBoxScanner resides.")
+
+    report.close()
+
+# Writing all scan files output into RS-Debug-ScanLog for debugging purposes.
+for file_index, file_name in enumerate(tool_names):
+    with open(debuglog, "a") as report:
+        try:
+            with open("/tmp/KPToolBoxScanner_temp_" + file_name[arg1], 'r') as temp_report:
+                data = temp_report.read()
+                report.write(file_name[arg2])
+                report.write("\n------------------------\n\n")
+                report.write(data)
+                report.write("\n\n")
+            temp_report.close()
+        except:
+            break
+    report.close()
+
+print("\tTotal Number of Vulnerability Checks        : " + bcolors.BOLD + bcolors.OKGREEN + str(len(tool_names)) + bcolors.ENDC)
+print("\tTotal Number of Vulnerability Checks Skipped: " + bcolors.BOLD + bcolors.WARNING + str(rs_skipped_checks) + bcolors.ENDC)
+print("\tTotal Number of Vulnerabilities Detected    : " + bcolors.BOLD + bcolors.BADFAIL + str(len(rs_vul_list)) + bcolors.ENDC)
+print("\tTotal Time Elapsed for the Scan             : " + bcolors.BOLD + bcolors.OKBLUE + display_time(int(rs_total_elapsed)) + bcolors.ENDC)
+print("\n")
+print("\tFor Debugging Purposes, You can view the complete output generated by all the tools named " + bcolors.OKBLUE + debuglog + bcolors.ENDC + " under the same directory.")
+print(bcolors.BG_ENDL_TXT + "[ Report Generation Phase Completed. ]" + bcolors.ENDC)
+
+# Displaying the list of vulnerabilities detected
+if len(rs_vul_list) > 0:
+    print("Vulnerabilities detected:")
+    for vulnerability in rs_vul_list:
+        print(vulnerability)
 
 os.system('setterm -cursor on')
 os.system('rm /tmp/KPToolBoxScanner_te* > /dev/null 2>&1')  # Clearing previous scan files
 
-# Generate PDF report
-pdf_output_file = f"KPToolBoxScanner_Report_{target}_{date}.pdf"
-create_pdf_report("\n".join(report_content), pdf_output_file)
-
-# Print details of the vulnerabilities detected
-print("\nDetailed Vulnerability Report:\n")
-for vuln in rs_vul_list:
-    vuln_info = vuln.split('*')
-    print(f"Vulnerability ID: {vuln_info[arg1]}")
-    print(f"Description: {vuln_info[arg2]}")
-    print("------------------------")
-    temp_report_name = f"/tmp/KPToolBoxScanner_temp_{vuln_info[arg1]}"
-    if os.path.exists(temp_report_name):
-        with open(temp_report_name, 'r') as temp_report:
-            data = temp_report.read()
-            print(data)
-            print("\n\n")
-    else:
-        print(f"Error: {temp_report_name} does not exist.")
-
-print(f"PDF report generated: {pdf_output_file}")
 
 
