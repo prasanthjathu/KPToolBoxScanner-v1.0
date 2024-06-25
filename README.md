@@ -4,13 +4,8 @@ _**KPToolBoxScanner has been ported to Python3 i.e **.
 
     name                =   "KPToolBoxScanner",
     version             =   '1.0',
-    description         =   "The Multi-Tool Scanner.",
-    long_description    =   README,
-    long_description_content_type = "text/markdown",
     url                 =   "https://github.com/prasanthjathu/toolbox.git",
     author              =   "Prasanth",
-    py_modules          =   ['KPToolBoxScanner',],
-    install_requires    =   [],
     python_requires=">=3.6",
 
 
