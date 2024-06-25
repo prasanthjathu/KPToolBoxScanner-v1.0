@@ -1147,7 +1147,7 @@ elif args_namespace.target:
     print("\n")
 
     #################### Report & Documentation Phase ###########################
-    from fpdf import FPDF
+from fpdf import FPDF
 import subprocess
 import os
 
@@ -1186,6 +1186,15 @@ def create_pdf_report(report_content, output_file):
     
     pdf.output(output_file)
 
+# Assuming these variables are properly initialized and populated in your existing scanning process
+rs_vul_list = ["nmap_logjam*LOGJAM Vulnerability detected in the scan result"]  # List of vulnerabilities
+tool_names = ["nmap_logjam"]  # List of tool names used in the scan
+target = "192.168.1.153"  # Example target
+arg1 = 0  # Example index for vulnerability ID
+arg2 = 1  # Example index for vulnerability description
+rs_skipped_checks = 0  # Number of skipped checks
+rs_total_elapsed = 3600  # Total elapsed time in seconds
+
 # Collecting report content
 report_content = []
 
@@ -1199,6 +1208,7 @@ if len(rs_vul_list) == 0:
     report_content.append("\tNo Vulnerabilities Detected.")
 else:
     with open(vulreport, "a") as report:
+        rs_vul = 0  # Initialize the vulnerability counter
         while rs_vul < len(rs_vul_list):
             vuln_info = rs_vul_list[rs_vul].split('*')
             report.write(vuln_info[arg2])
@@ -1206,11 +1216,18 @@ else:
             report_content.append(vuln_info[arg2])
             report_content.append("\n------------------------\n\n")
             temp_report_name = f"/tmp/KPToolBoxScanner_temp_{vuln_info[arg1]}"
-            with open(temp_report_name, 'r') as temp_report:
-                data = temp_report.read()
-                report.write(data)
+            if os.path.exists(temp_report_name):
+                with open(temp_report_name, 'r') as temp_report:
+                    data = temp_report.read()
+                    report.write(data)
+                    report.write("\n\n")
+                    report_content.append(data)
+                    report_content.append("\n\n")
+            else:
+                missing_file_msg = f"Error: {temp_report_name} does not exist."
+                report.write(missing_file_msg)
                 report.write("\n\n")
-                report_content.append(data)
+                report_content.append(missing_file_msg)
                 report_content.append("\n\n")
             rs_vul += 1
 
@@ -1221,19 +1238,30 @@ else:
 for file_index, file_name in enumerate(tool_names):
     with open(debuglog, "a") as report:
         try:
-            with open(f"/tmp/KPToolBoxScanner_temp_{file_name[arg1]}", 'r') as temp_report:
-                data = temp_report.read()
-                report.write(file_name[arg2])
-                report.write("\n------------------------\n\n")
-                report.write(data)
+            temp_report_name = f"/tmp/KPToolBoxScanner_temp_{file_name[arg1]}"
+            if os.path.exists(temp_report_name):
+                with open(temp_report_name, 'r') as temp_report:
+                    data = temp_report.read()
+                    report.write(file_name[arg2])
+                    report.write("\n------------------------\n\n")
+                    report.write(data)
+                    report.write("\n\n")
+                    report_content.append(file_name[arg2])
+                    report_content.append("\n------------------------\n\n")
+                    report_content.append(data)
+                    report_content.append("\n\n")
+            else:
+                missing_file_msg = f"Error: {temp_report_name} does not exist."
+                report.write(missing_file_msg)
                 report.write("\n\n")
-                report_content.append(file_name[arg2])
-                report_content.append("\n------------------------\n\n")
-                report_content.append(data)
+                report_content.append(missing_file_msg)
                 report_content.append("\n\n")
-            temp_report.close()
-        except:
-            break
+        except Exception as e:
+            error_msg = f"Error reading {temp_report_name}: {str(e)}"
+            report.write(error_msg)
+            report.write("\n\n")
+            report_content.append(error_msg)
+            report_content.append("\n\n")
     report.close()
 
     print("\tTotal Number of Vulnerability Checks        : "+bcolors.BOLD+bcolors.OKGREEN+str(len(tool_names))+bcolors.ENDC)
@@ -1247,7 +1275,6 @@ for file_index, file_name in enumerate(tool_names):
     os.system('setterm -cursor on')
     os.system('rm /tmp/KPToolBoxScanner_te* > /dev/null 2>&1') # Clearing previous scan files
 
-
 # Generate PDF report
 pdf_output_file = f"KPToolBoxScanner_Report_{target}_{date}.pdf"
 create_pdf_report("\n".join(report_content), pdf_output_file)
@@ -1260,10 +1287,13 @@ for vuln in rs_vul_list:
     print(f"Description: {vuln_info[arg2]}")
     print("------------------------")
     temp_report_name = f"/tmp/KPToolBoxScanner_temp_{vuln_info[arg1]}"
-    with open(temp_report_name, 'r') as temp_report:
-        data = temp_report.read()
-        print(data)
-        print("\n\n")
-    temp_report.close()
+    if os.path.exists(temp_report_name):
+        with open(temp_report_name, 'r') as temp_report:
+            data = temp_report.read()
+            print(data)
+            print("\n\n")
+    else:
+        print(f"Error: {temp_report_name} does not exist.")
 
 print(f"PDF report generated: {pdf_output_file}")
+
