@@ -1,4 +1,4 @@
-# KP ToolBox Scanner v1.0 - _Vulnerability Scanner
+# KP ToolBox Scanner v1.0 - Vulnerability Scanner
 _**KPToolBoxScanner has been ported to Python3 i.e **. 
 
 
