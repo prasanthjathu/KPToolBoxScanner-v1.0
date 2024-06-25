@@ -1,16 +1,3 @@
-
-print("Interface de sécurité")
-print("1. Configuration")
-print("2. Découverte de ports, de services et Détection de vulnérabilités")
-print("3. Analyse de la sécurité des mots de passe")
-print("4. Tests d'authentification")
-print("5. Exploitation de vulnérabilités")
-print("6. Post-exploitation")
-print("7. Reporting")
-print("8. Vérification payload")
-print("9. Quitter")
-
-
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #                                      
