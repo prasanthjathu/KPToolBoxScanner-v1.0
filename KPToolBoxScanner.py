@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #                                      
@@ -1194,3 +1195,43 @@ elif args_namespace.target:
 
     os.system('setterm -cursor on')
     os.system('rm /tmp/KPToolBoxScanner_te* > /dev/null 2>&1') # Clearing previous scan files
+
+
+# Function to create a PDF report
+from fpdf import FPDF
+
+def create_pdf_report(report_content, output_file):
+    pdf = FPDF()
+    pdf.add_page()
+    pdf.set_font("Arial", size=12)
+    
+    for line in report_content.split('\n'):
+        pdf.cell(200, 10, txt=line, ln=True, align='L')
+    
+    pdf.output(output_file)
+
+# Example usage of the function with sample content
+scan_report = """KPToolBoxScanner Report
+
+Scan Date: 2024-06-25
+
+Summary:
+- Scanned Host: example.com
+- Vulnerabilities Found: 5
+- Critical Issues: 2
+
+Detailed Report:
+1. Vulnerability A - Description...
+2. Vulnerability B - Description...
+3. Vulnerability C - Description...
+4. Vulnerability D - Description...
+5. Vulnerability E - Description...
+
+Critical Issues:
+1. Critical Vulnerability 1 - Description...
+2. Critical Vulnerability 2 - Description...
+
+End of Report"""
+
+# Saving the sample report as a PDF
+create_pdf_report(scan_report, "KPToolBoxScanner_Report.pdf")
