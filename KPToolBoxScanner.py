@@ -23,10 +23,10 @@ import threading
 import re
 import random
 from urllib.parse import urlsplit
-import requests
 
-CURSOR_UP_ONE = '\\x1b[1A' 
-ERASE_LINE = '\\x1b[2K'
+
+CURSOR_UP_ONE = '\x1b[1A' 
+ERASE_LINE = '\x1b[2K'
 
 # Scan Time Elapser
 intervals = (
@@ -55,7 +55,7 @@ def terminal_size():
 
 
 def url_maker(url):
-    if not re.match(r'http(s?)\\:', url):
+    if not re.match(r'http(s?)\:', url):
         url = 'http://' + url
     parsed = urlsplit(url)
     host = parsed.netloc
@@ -72,28 +72,29 @@ def check_internet():
     os.system('rm rs_net > /dev/null 2>&1')
     return val
 
+
 # Initializing the color module class
 class bcolors:
-    HEADER = '\\033[95m'
-    OKBLUE = '\\033[94m'
-    OKGREEN = '\\033[92m'
-    WARNING = '\\033[93m'
-    BADFAIL = '\\033[91m'
-    ENDC = '\\033[0m'
-    BOLD = '\\033[1m'
-    UNDERLINE = '\\033[4m'
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    BADFAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
-    BG_ERR_TXT  = '\\033[41m' # For critical errors and crashes
-    BG_HEAD_TXT = '\\033[100m'
-    BG_ENDL_TXT = '\\033[46m'
-    BG_CRIT_TXT = '\\033[45m'
-    BG_HIGH_TXT = '\\033[41m'
-    BG_MED_TXT  = '\\033[43m'
-    BG_LOW_TXT  = '\\033[44m'
-    BG_INFO_TXT = '\\033[42m'
+    BG_ERR_TXT  = '\033[41m' # For critical errors and crashes
+    BG_HEAD_TXT = '\033[100m'
+    BG_ENDL_TXT = '\033[46m'
+    BG_CRIT_TXT = '\033[45m'
+    BG_HIGH_TXT = '\033[41m'
+    BG_MED_TXT  = '\033[43m'
+    BG_LOW_TXT  = '\033[44m'
+    BG_INFO_TXT = '\033[42m'
 
-    BG_SCAN_TXT_START = '\\x1b[6;30;42m'
-    BG_SCAN_TXT_END   = '\\x1b[0m'
+    BG_SCAN_TXT_START = '\x1b[6;30;42m'
+    BG_SCAN_TXT_END   = '\x1b[0m'
 
 
 # Classifies the Vulnerability's Severity
@@ -116,37 +117,16 @@ proc_high = bcolors.BADFAIL + "●" + bcolors.ENDC
 proc_med  = bcolors.WARNING + "●" + bcolors.ENDC
 proc_low  = bcolors.OKGREEN + "●" + bcolors.ENDC
 
-def fetch_cve_details(vulnerability):
-    url = f"https://services.nvd.nist.gov/rest/json/cves/1.0?keyword={vulnerability}"
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            data = response.json()
-            if 'result' in data and 'CVE_Items' in data['result']:
-                return [item['cve']['CVE_data_meta']['ID'] for item in data['result']['CVE_Items']]
-        return []
-    except Exception as e:
-        print(f"Error fetching CVE details: {e}")
-        return []
-
 # Links the vulnerability with threat level and remediation database
 def vul_remed_info(tool, resp, fix):
-    print("\\n\\tRemediation Information for " + bcolors.OKBLUE + str(tool) + bcolors.ENDC + " :\\n")
+    print("\n\tRemediation Information for " + bcolors.OKBLUE + str(tool) + bcolors.ENDC + " :\n")
     for v3 in range(1, len(resp) + 1):
-        vulnerability = resp[v3 - 1]
-        print("\\t" + bcolors.OKGREEN + str(vulnerability) + bcolors.ENDC)
+        print("\t" + bcolors.OKGREEN + str(resp[v3 - 1]) + bcolors.ENDC)
         try:
-            print("\\t" + bcolors.BADFAIL + str(tools_fix[v3 - 1][1]) + bcolors.ENDC)
+            print("\t" + bcolors.BADFAIL + str(tools_fix[v3 - 1][1]) + bcolors.ENDC)
         except IndexError:
-            print("\\t" + bcolors.WARNING + "Error: No fix information available for this vulnerability." + bcolors.ENDC)
-        
-        # Fetch and print CVE details for the vulnerability
-        cve_details = fetch_cve_details(vulnerability)
-        if cve_details:
-            print(f"\\tAssociated CVEs: {', '.join(cve_details)}")
-        else:
-            print(f"\\tNo CVEs found for vulnerability: {vulnerability}")
-    print("\\n")
+            print("\t" + bcolors.WARNING + "Error: No fix information available for this vulnerability." + bcolors.ENDC)
+    print("\n")
 
 # KPToolBoxScanner Help Context
 def helper():
@@ -1219,6 +1199,55 @@ print(bcolors.BG_ENDL_TXT + "[ Report Generation Phase Completed. ]" + bcolors.E
 if len(rs_vul_list) > 0:
     print("Vulnerabilities detected:")
     for vulnerability in rs_vul_list:
+# Importing the necessary libraries for handling CVE information
+import json
+
+# Define a function to fetch CVE information based on the vulnerability
+def get_cve_info(vuln_name):
+    # Mock CVE data for demonstration purposes
+    cve_database = {
+        "vuln1": "CVE-2021-1234",
+        "vuln2": "CVE-2021-2345",
+        "vuln3": "CVE-2021-3456"
+    }
+    return cve_database.get(vuln_name, "CVE not found")
+
+# Modified vul_info function to include CVE information
+def vul_info(val, vuln_name=None):
+    result = ''
+    if val == 'c':
+        result = bcolors.BG_CRIT_TXT + " critical " + bcolors.ENDC
+    elif val == 'h':
+        result = bcolors.BG_HIGH_TXT + " high " + bcolors.ENDC
+    elif val == 'm':
+        result = bcolors.BG_MED_TXT + " medium " + bcolors.ENDC
+    elif val == 'l':
+        result = bcolors.BG_LOW_TXT + " low " + bcolors.ENDC
+    else:
+        result = bcolors.BG_INFO_TXT + " info " + bcolors.ENDC
+
+    if vuln_name:
+        cve_id = get_cve_info(vuln_name)
+        result += f" (CVE: {cve_id})"
+    return result
+
+# Assuming this section contains rs_vul_list where vulnerabilities are stored
+# Modified section to display detected vulnerabilities with CVE information
+if 'rs_vul_list' in locals() or 'rs_vul_list' in globals():
+    print("Vulnerabilities detected:")
+    for vulnerability in rs_vul_list:
+        print(vul_info('c', vulnerability))  # Assuming 'c' is the severity for demonstration
+
+    # Final section to export the vulnerability report including CVE information
+    vulreport = "vulnerability_report.json"
+    vuln_details = [{"vulnerability": v, "severity": "critical", "cve": get_cve_info(v)} for v in rs_vul_list]
+
+    with open(vulreport, 'w') as report_file:
+        json.dump(vuln_details, report_file, indent=4)
+
+    print(f"Complete Vulnerability Report is saved as {vulreport}")
+else:
+    print("No vulnerabilities detected.")
         print(vulnerability)
 
 os.system('setterm -cursor on')
