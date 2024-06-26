@@ -782,3 +782,4 @@ colors.ENDC)
 else:
     logo()
     print(bcolors.WARNING+"Usage: python3 KPToolBoxScanner.py example.com"+bcolors.ENDC)
+    
