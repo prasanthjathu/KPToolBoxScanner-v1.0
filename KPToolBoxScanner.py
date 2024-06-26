@@ -318,7 +318,7 @@ tool_cmd   = [
     ["nikto -Plugins 'apache_expect_xss' -host ",""],
     ["nikto -Plugins 'subdomain' -host ",""],
     ["nikto -Plugins 'shellshock' -host ",""],
-    ["nikto -Plugins 'cookies' -host ","
+    ["nikto -Plugins 'cookies' -host ",""],
 
 "],
     ["nikto -Plugins 'put_del_test' -host ",""],
