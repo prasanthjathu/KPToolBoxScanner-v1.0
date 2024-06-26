@@ -1199,55 +1199,55 @@ print(bcolors.BG_ENDL_TXT + "[ Report Generation Phase Completed. ]" + bcolors.E
 if len(rs_vul_list) > 0:
     print("Vulnerabilities detected:")
     for vulnerability in rs_vul_list:
-# Importing the necessary libraries for handling CVE information
-import json
+    # Importing the necessary libraries for handling CVE information
+    import json
 
-# Define a function to fetch CVE information based on the vulnerability
-def get_cve_info(vuln_name):
-    # Mock CVE data for demonstration purposes
-    cve_database = {
-        "vuln1": "CVE-2021-1234",
-        "vuln2": "CVE-2021-2345",
-        "vuln3": "CVE-2021-3456"
-    }
-    return cve_database.get(vuln_name, "CVE not found")
+    # Define a function to fetch CVE information based on the vulnerability
+    def get_cve_info(vuln_name):
+        # Mock CVE data for demonstration purposes
+        cve_database = {
+            "vuln1": "CVE-2021-1234",
+            "vuln2": "CVE-2021-2345",
+            "vuln3": "CVE-2021-3456"
+        }
+        return cve_database.get(vuln_name, "CVE not found")
 
-# Modified vul_info function to include CVE information
-def vul_info(val, vuln_name=None):
-    result = ''
-    if val == 'c':
-        result = bcolors.BG_CRIT_TXT + " critical " + bcolors.ENDC
-    elif val == 'h':
-        result = bcolors.BG_HIGH_TXT + " high " + bcolors.ENDC
-    elif val == 'm':
-        result = bcolors.BG_MED_TXT + " medium " + bcolors.ENDC
-    elif val == 'l':
-        result = bcolors.BG_LOW_TXT + " low " + bcolors.ENDC
+    # Modified vul_info function to include CVE information
+    def vul_info(val, vuln_name=None):
+        result = ''
+        if val == 'c':
+            result = bcolors.BG_CRIT_TXT + " critical " + bcolors.ENDC
+        elif val == 'h':
+            result = bcolors.BG_HIGH_TXT + " high " + bcolors.ENDC
+        elif val == 'm':
+            result = bcolors.BG_MED_TXT + " medium " + bcolors.ENDC
+        elif val == 'l':
+            result = bcolors.BG_LOW_TXT + " low " + bcolors.ENDC
+        else:
+            result = bcolors.BG_INFO_TXT + " info " + bcolors.ENDC
+
+        if vuln_name:
+            cve_id = get_cve_info(vuln_name)
+            result += f" (CVE: {cve_id})"
+        return result
+
+    # Assuming this section contains rs_vul_list where vulnerabilities are stored
+    # Modified section to display detected vulnerabilities with CVE information
+    if 'rs_vul_list' in locals() or 'rs_vul_list' in globals():
+        print("Vulnerabilities detected:")
+        for vulnerability in rs_vul_list:
+            print(vul_info('c', vulnerability))  # Assuming 'c' is the severity for demonstration
+
+        # Final section to export the vulnerability report including CVE information
+        vulreport = "vulnerability_report.json"
+        vuln_details = [{"vulnerability": v, "severity": "critical", "cve": get_cve_info(v)} for v in rs_vul_list]
+
+        with open(vulreport, 'w') as report_file:
+            json.dump(vuln_details, report_file, indent=4)
+
+        print(f"Complete Vulnerability Report is saved as {vulreport}")
     else:
-        result = bcolors.BG_INFO_TXT + " info " + bcolors.ENDC
-
-    if vuln_name:
-        cve_id = get_cve_info(vuln_name)
-        result += f" (CVE: {cve_id})"
-    return result
-
-# Assuming this section contains rs_vul_list where vulnerabilities are stored
-# Modified section to display detected vulnerabilities with CVE information
-if 'rs_vul_list' in locals() or 'rs_vul_list' in globals():
-    print("Vulnerabilities detected:")
-    for vulnerability in rs_vul_list:
-        print(vul_info('c', vulnerability))  # Assuming 'c' is the severity for demonstration
-
-    # Final section to export the vulnerability report including CVE information
-    vulreport = "vulnerability_report.json"
-    vuln_details = [{"vulnerability": v, "severity": "critical", "cve": get_cve_info(v)} for v in rs_vul_list]
-
-    with open(vulreport, 'w') as report_file:
-        json.dump(vuln_details, report_file, indent=4)
-
-    print(f"Complete Vulnerability Report is saved as {vulreport}")
-else:
-    print("No vulnerabilities detected.")
+        print("No vulnerabilities detected.")
         print(vulnerability)
 
 os.system('setterm -cursor on')
