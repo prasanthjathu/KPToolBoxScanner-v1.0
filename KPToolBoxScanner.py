@@ -1199,11 +1199,11 @@ print(bcolors.BG_ENDL_TXT + "[ Report Generation Phase Completed. ]" + bcolors.E
 # Displaying the list of vulnerabilities detected
 if len(rs_vul_list) > 0:
     print("Vulnerabilities detected:")
-        for vulnerability in rs_vul_list:
+    for vulnerability in rs_vul_list:
     # Importing the necessary libraries for handling CVE information
-        import json
-
-    # Define a function to fetch CVE information based on the vulnerability
+        # Importing the necessary libraries for handling CVE information
+        # Define a function to fetch CVE information based on the vulnerability
+        pass  # Placeholder for the actual code
     def get_cve_info(vuln_name):
         # Mock CVE data for demonstration purposes
         cve_database = {
