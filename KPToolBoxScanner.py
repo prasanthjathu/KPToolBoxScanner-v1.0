@@ -1253,5 +1253,3 @@ if len(rs_vul_list) > 0:
 os.system('setterm -cursor on')
 os.system('rm /tmp/KPToolBoxScanner_te* > /dev/null 2>&1')  # Clearing previous scan files
 
-
-
