@@ -25,6 +25,22 @@ import random
 from urllib.parse import urlsplit
 import json
 
+import json
+import requests
+
+def fetch_cve_info(vulnerability):
+    # Replace the URL with the actual API or database endpoint you are using
+    api_url = f"https://example-cve-api.com/{vulnerability}"
+    try:
+        response = requests.get(api_url)
+        if response.status_code == 200:
+            cve_data = response.json()
+            return cve_data.get('cve_id', 'CVE not found')
+        else:
+            return 'CVE not found'
+    except Exception as e:
+        return f'Error fetching CVE: {str(e)}'
+
 
 CURSOR_UP_ONE = '\x1b[1A' 
 ERASE_LINE = '\x1b[2K'
