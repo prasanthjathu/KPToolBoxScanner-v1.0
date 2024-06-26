@@ -25,6 +25,22 @@ import random
 from urllib.parse import urlsplit
 import json
 
+import requests
+
+def fetch_cve_info(vulnerability):
+    # Replace the URL with the actual API or database endpoint you are using
+    api_url = f"https://example-cve-api.com/{vulnerability}"
+    try:
+        response = requests.get(api_url)
+        if response.status_code == 200:
+            cve_data = response.json()
+            return cve_data.get('cve_id', 'CVE not found')
+        else:
+            return 'CVE not found'
+    except Exception as e:
+        return f'Error fetching CVE: {str(e)}'
+
+
 
 CURSOR_UP_ONE = '\x1b[1A' 
 ERASE_LINE = '\x1b[2K'
@@ -1200,8 +1216,8 @@ print(bcolors.BG_ENDL_TXT + "[ Report Generation Phase Completed. ]" + bcolors.E
 if len(rs_vul_list) > 0:
     print("Vulnerabilities detected:")
     for vulnerability in rs_vul_list:
-    # Importing the necessary libraries for handling CVE information
-        # Importing the necessary libraries for handling CVE information
+        cve_id = fetch_cve_info(vulnerability)
+        print(f" critical  (CVE: {cve_id})")
         # Define a function to fetch CVE information based on the vulnerability
         pass  # Placeholder for the actual code
     def get_cve_info(vuln_name):
@@ -1237,8 +1253,8 @@ if len(rs_vul_list) > 0:
     if 'rs_vul_list' in locals() or 'rs_vul_list' in globals():
         print("Vulnerabilities detected:")
         for vulnerability in rs_vul_list:
-            print(vul_info('c', vulnerability))  # Assuming 'c' is the severity for demonstration
-
+        cve_id = fetch_cve_info(vulnerability)
+        print(f" critical  (CVE: {cve_id})")
         # Final section to export the vulnerability report including CVE information
         vulreport = "vulnerability_report.json"
         vuln_details = [{"vulnerability": v, "severity": "critical", "cve": get_cve_info(v)} for v in rs_vul_list]
