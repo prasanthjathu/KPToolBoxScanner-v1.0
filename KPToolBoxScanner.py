@@ -442,15 +442,11 @@ tool_status = [
     ["open",0,proc_high," > 75m","nmapfulludp",["Failed to resolve"]],
     ["open",0,proc_low," < 30s","nmapsnmp",["Failed to resolve"]],
     ["Microsoft SQL Server Error Log",0,proc_low," < 30s","elmahxd",["unable to resolve host address","Connection timed out"]],
-    ["open",0,proc_low," < 20s","nmaptcpsmb",["Failed to resolve"]],
-    ["open",0,proc_low," < 20s","nmapudpsmb",["Failed to resolve"]],
-    ["WebDAV is ENABLED",0,proc_low," < 40s","nmapwebdaviis",["Failed to resolve"]],
-]
-
     ["WebDAV is ENABLED",0,proc_low," < 40s","nmapwebdaviis",["Failed to resolve"]]
 ]
 
-
+# Vulnerabilities and Remediation
+tools_fix = [
 # Vulnerabilities and Remediation
 tools_fix = [
         "It is recommended to filter out special charaters in the URL and set a custom error page on such situations instead of showing default error messages. This resource helps you in setting up a custom error page on a Microsoft .Net Application. https://docs.microsoft.com/en-us/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs"],
