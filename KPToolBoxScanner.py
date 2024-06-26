@@ -448,7 +448,7 @@ tool_status = [
 ]
 
 # Vulnerabilities and Remediation
-    ["WebDAV is ENABLED",0,proc_low," < 40s","nmapwebdaviis",["Failed to resolve"]],
+    ["WebDAV is ENABLED",0,proc_low," < 40s","nmapwebdaviis",["Failed to resolve"]]
 ]
 
 # Vulnerabilities and Remediation
