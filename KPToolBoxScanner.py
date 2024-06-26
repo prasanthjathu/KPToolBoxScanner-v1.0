@@ -447,18 +447,25 @@ tool_status = [
 
 # Vulnerabilities and Remediation
 tools_fix = [
-    [1, "Not a vulnerability, just an informational alert. The host does not have IPv6 support. IPv6 provides more security as IPSec (responsible for CIA - Confidentiality, Integrity and Availablity) is incorporated into this model. So it is good to have IPv6 Support.",
+    [1, "Not a vulnerability, just an informational alert. The host does not have IPv6 support. IPv6 provides more security as IPSec (responsible for CIA - Confidentiality, Integrity, and Availability) is incorporated into this model. So it is good to have IPv6 Support.",
         "It is recommended to implement IPv6. More information on how to implement IPv6 can be found from this resource. https://www.cisco.com/c/en/us/solutions/collateral/enterprise/cisco-on-cisco/IPv6-Implementation_CS.html"],
     [2, "Sensitive Information Leakage Detected. The ASP.Net application does not filter out illegal characters in the URL. The attacker injects a special character (%7C~.aspx) to make the application spit sensitive information about the server stack.",
-        "It is recommended to filter out special characters in the URL and set a custom error page on such situations instead of showing default error messages. This resource helps you in setting up a custom error page on a Microsoft .Net Application. https://docs.microsoft.com/en-us/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs"],
-    [3, "It is not bad to have a CMS in WordPress. There are chances that the version may contain vulnerabilities or any third party scripts associated with it may possess vulnerabilities.",
+        "It is recommended to filter out special characters in the URL and set a custom error page in such situations instead of showing default error messages. This resource helps you in setting up a custom error page on a Microsoft .Net Application. https://docs.microsoft.com/en-us/aspnet/web-forms/overview/older-versions-getting-started/deploying-web-site-projects/displaying-a-custom-error-page-cs"],
+    [3, "It is not bad to have a CMS in WordPress. There are chances that the version may contain vulnerabilities or any third-party scripts associated with it may possess vulnerabilities.",
         "It is recommended to conceal the version of WordPress. This resource contains more information on how to secure your WordPress Blog. https://codex.wordpress.org/Hardening_WordPress"],
-    [4, "It is not bad to have a CMS in Drupal. There are chances that the version may contain vulnerabilities or any third party scripts associated with it may possess vulnerabilities.",
+    [4, "It is not bad to have a CMS in Drupal. There are chances that the version may contain vulnerabilities or any third-party scripts associated with it may possess vulnerabilities.",
         "It is recommended to conceal the version of Drupal. This resource contains more information on how to secure your Drupal Blog. https://www.drupal.org/docs/7/site-building-best-practices/ensure-that-your-site-is-secure"],
-    [5, "It is not bad to have a CMS in Joomla. There are chances that the version may contain vulnerabilities or any third party scripts associated with it may possess vulnerabilities.",
+    [5, "It is not bad to have a CMS in Joomla. There are chances that the version may contain vulnerabilities or any third-party scripts associated with it may possess vulnerabilities.",
         "It is recommended to conceal the version of Joomla. This resource contains more information on how to secure your Joomla Blog. https://www.incapsula.com/blog/10-tips-to-improve-your-joomla-website-security.html"],
-    [6, "Sometimes robots.txt or sitemap.xml may contain rules such that certain links that are not supposed to be accessed/indexed by crawlers and search engines. Search engines may skip those links but attackers will be able to access it directly.",
+    [6, "Sometimes robots.txt or sitemap.xml may contain rules such that certain links that are not supposed to be accessed/indexed by crawlers and search engines. Search engines may skip those links but attackers will be able to access them directly.",
         "It is a good practice not to include sensitive links in the robots or sitemap files."],
+    [7, "Certain information such as email addresses or user names may be exposed due to misconfiguration or lack of proper controls.",
+        "It is recommended to avoid exposing sensitive information and follow best practices for securing such data."],
+    [8, "Open Ports give attackers a hint to exploit the services. Attackers try to retrieve banner information through the ports and understand what type of service the host is running.",
+        "It is recommended to close unnecessary ports and secure the services running on open ports."],
+    [9, "Web Application Firewalls offer great protection against common web attacks like XSS, SQLi, etc. They also provide an additional line of defense to your security infrastructure.",
+        "This resource contains information on web application firewalls that could suit your application. https://www.gartner.com/reviews/market/web-application-firewall"]
+]
     [7, "Certain information such as email addresses or user names may be exposed due to misconfiguration or lack of proper controls.",
         "It is recommended to avoid exposing sensitive information and follow best practices for securing such data."],
     [8, "Open Ports give attackers a hint to exploit the services. Attackers try to retrieve banner information through the ports and understand what type of service the host is running.",
