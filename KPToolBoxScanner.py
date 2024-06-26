@@ -146,7 +146,7 @@ def vul_remed_info(tool, resp, fix):
             print(f"\\tAssociated CVEs: {', '.join(cve_details)}")
         else:
             print(f"\\tNo CVEs found for vulnerability: {vulnerability}")
-    print("\\n"
+    print("\\n")
 
 # KPToolBoxScanner Help Context
 def helper():
