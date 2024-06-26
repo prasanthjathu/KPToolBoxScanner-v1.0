@@ -16,7 +16,7 @@ setup(
     long_description    =   README,
     long_description_content_type = "text/markdown",
     url                 =   "https://github.com/prasanthjathu/toolbox.git",
-    author              =   "Prasanth",
+    author              =   "KUSALAVAN Prasanth",
     py_modules          =   ['KPToolBoxScanner',],
     install_requires    =   [],
     python_requires=">=3.6",
