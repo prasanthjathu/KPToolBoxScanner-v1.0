@@ -23,6 +23,7 @@ import threading
 import re
 import random
 from urllib.parse import urlsplit
+import json
 
 
 CURSOR_UP_ONE = '\x1b[1A' 
@@ -1198,9 +1199,9 @@ print(bcolors.BG_ENDL_TXT + "[ Report Generation Phase Completed. ]" + bcolors.E
 # Displaying the list of vulnerabilities detected
 if len(rs_vul_list) > 0:
     print("Vulnerabilities detected:")
-    for vulnerability in rs_vul_list:
+        for vulnerability in rs_vul_list:
     # Importing the necessary libraries for handling CVE information
-    import json
+        import json
 
     # Define a function to fetch CVE information based on the vulnerability
     def get_cve_info(vuln_name):
