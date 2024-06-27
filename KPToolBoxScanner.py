@@ -355,6 +355,9 @@ tool_names = [
                 #61
                 ["nikto_httpoptions","Nikto - Checks for HTTP Options on the Domain.","nikto",1],
 
+                #62
+                ["nikto_cgi","Nikto - Enumerates CGI Directories.","nikto",1],
+
                 #63
                 ["nikto_ssl","Nikto - Performs SSL Checks.","nikto",1],
 
@@ -492,7 +495,10 @@ tool_cmd   = [
 
                 #61
                 ["nikto -Plugins 'httpoptions' -host ",""],
-  
+
+                #62
+                ["nikto -Plugins 'cgi' -host ",""],
+
                 #63
                 ["nikto -Plugins 'ssl' -host ",""],
 
@@ -642,6 +648,9 @@ tool_resp   = [
 
                 #61
                 ["Some issues found with HTTP Options.","l",42],
+
+                #62
+                ["CGI Directories Enumerated.","l",26],
 
                 #63
                 ["Vulnerabilities reported in SSL Scans.","m",29],
@@ -793,6 +802,9 @@ tool_status = [
 
                 #61
                 ["0 item(s) reported",1,proc_low," < 35s","nikto10",["ERROR: Cannot resolve hostname","0 item(s) reported","No web server found","0 host(s) tested"]],
+
+                #62
+                ["0 item(s) reported",1,proc_low," < 35s","nikto11",["ERROR: Cannot resolve hostname","0 item(s) reported","No web server found","0 host(s) tested"]],
 
                 #63
                 ["0 item(s) reported",1,proc_low," < 35s","nikto12",["ERROR: Cannot resolve hostname","0 item(s) reported","No web server found","0 host(s) tested"]],
