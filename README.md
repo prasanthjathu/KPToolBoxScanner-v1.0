@@ -49,6 +49,9 @@ cd <repository-directory>
 ```bash
 python KPToolBoxScanner.py example.com
 
+## Demo
+Demo of this project:
+![Demo Video](demo.mov)
 
 
 # KPToolBoxScanner v1.0
