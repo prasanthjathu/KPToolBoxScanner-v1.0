@@ -355,6 +355,9 @@ tool_names = [
                 #61
                 ["nikto_httpoptions","Nikto - Checks for HTTP Options on the Domain.","nikto",1],
 
+                #62
+                ["nikto_cgi","Nikto - Enumerates CGI Directories.","nikto",1],
+
                 #63
                 ["nikto_ssl","Nikto - Performs SSL Checks.","nikto",1],
 
@@ -492,6 +495,9 @@ tool_cmd   = [
 
                 #61
                 ["nikto -Plugins 'httpoptions' -host ",""],
+
+                #62
+                ["nikto -Plugins 'cgi' -host ",""],
 
                 #63
                 ["nikto -Plugins 'ssl' -host ",""],
@@ -642,6 +648,9 @@ tool_resp   = [
 
                 #61
                 ["Some issues found with HTTP Options.","l",42],
+
+                #62
+                ["CGI Directories Enumerated.","l",26],
 
                 #63
                 ["Vulnerabilities reported in SSL Scans.","m",29],
@@ -794,6 +803,9 @@ tool_status = [
                 #61
                 ["0 item(s) reported",1,proc_low," < 35s","nikto10",["ERROR: Cannot resolve hostname","0 item(s) reported","No web server found","0 host(s) tested"]],
 
+                #62
+                ["0 item(s) reported",1,proc_low," < 35s","nikto11",["ERROR: Cannot resolve hostname","0 item(s) reported","No web server found","0 host(s) tested"]],
+
                 #63
                 ["0 item(s) reported",1,proc_low," < 35s","nikto12",["ERROR: Cannot resolve hostname","0 item(s) reported","No web server found","0 host(s) tested"]],
 
@@ -911,7 +923,7 @@ tools_fix = [
                     [41, "Gives attacker an idea on how the address scheming is done internally on the organizational network. Discovering the private addresses used within an organization can help attackers in carrying out network-layer attacks aiming to penetrate the organization's internal infrastructure.",
                             "Restrict the banner information to the outside world from the disclosing service. More information on mitigating this vulnerability can be found here. https://portswigger.net/kb/issues/00600300_private-ip-addresses-disclosed"],
                     [42, "There are chances for an attacker to manipulate files on the webserver.",
-                            "It is recommended to disable the HTTP PUT and DEL methods incase if you don't use any REST API Services. Following resources helps you how to disable these methods. http://www.techstacks.com/howto/disable-http-methods-in-tomcat.html https://docs.oracle.com/cd/E19857-01/820-57/gghwc/index.html https://developer.ibm.com/answers/questions/3219/how-to-disable-http-methods-head-put-delete-option/"],
+                            "It is recommended to disable the HTTP PUT and DEL methods incase if you don't use any REST API Services. Following resources helps you how to disable these methods. http://www.techstacks.com/howto/disable-http-methods-in-tomcat.html https://docs.oracle.com/cd/E19857-01/820-5627/gghwc/index.html https://developer.ibm.com/answers/questions/321629/how-to-disable-http-methods-head-put-delete-option/"],
                     [43, "Attackers try to learn more about the target from the amount of information exposed in the headers. An attacker may know what type of tech stack a web application is emphasizing and many other information.",
                             "Banner Grabbing should be restricted and access to the services from outside would should be made minimum."],
                     [44, "An attacker who successfully exploited this vulnerability could read data, such as the view state, which was encrypted by the server. This vulnerability can also be used for data tampering, which, if successfully exploited, could be used to decrypt and tamper with the data encrypted by the server.",
