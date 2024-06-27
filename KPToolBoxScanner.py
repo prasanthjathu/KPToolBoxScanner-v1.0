@@ -356,6 +356,8 @@ tool_names = [
                 ["nikto_httpoptions","Nikto - Checks for HTTP Options on the Domain.","nikto",1],
 
                 #62
+                ["nikto_cgi","Nikto - Enumerates CGI Directories.","nikto",1],
+
                 #63
                 ["nikto_ssl","Nikto - Performs SSL Checks.","nikto",1],
 
