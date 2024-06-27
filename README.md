@@ -1,3 +1,4 @@
+
 # KPToolBoxScanner v1.0
 
 ## Description
@@ -99,61 +100,3 @@ cd <repository-directory>
 3. Run the script:
 ```bash
 python KPToolBoxScanner.py example.com
-```
-
-
-
-# KPToolBoxScanner v1.0
-
-## Description
-KPToolBoxScanner is a security scanning tool that automates the process of security scanning by utilizing various Linux security tools along with custom scripts.
-
-## Author
-Kusalavan Prasanth
-
-## Usage
-To run the script, use the following command:
-```bash
-python KPToolBoxScanner.py example.com
-```
-
-## Requirements
-Ensure you have the following installed:
-- Python 3
-- Necessary libraries as mentioned in the script:
-  - `sys`
-  - `argparse`
-  - `subprocess`
-  - `os`
-  - `time`
-  - `random`
-  - `threading`
-  - `re`
-  - `urllib.parse`
-
-## Features
-- Automates security scanning
-- Integrates multiple Linux security tools
-- Includes custom scripts for enhanced scanning
-
-## Functions
-### display_time(seconds, granularity=3)
-Calculates and displays the elapsed scan time.
-
-## Installation
-1. Clone the repository:
-```bash
-git clone https://github.com/prasanthjathu/toolbox.git 
-```
-2. Navigate to the directory:
-```bash
-cd <repository-directory>
-```
-3. Run the script:
-```bash
-python KPToolBoxScanner.py example.com
-```
-
-
-
-
