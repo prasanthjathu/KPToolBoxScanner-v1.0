@@ -52,7 +52,9 @@ python KPToolBoxScanner.py example.com
 
 ## Demo
 Demo of this project:
-[![Demo Video](https://github.com/prasanthjathu/toolbox/assets/81978724/0c76bfc5-20bd-4540-85a2-45c1353ed9d2)](https://github.com/prasanthjathu/toolbox/assets/81978724/0c76bfc5-20bd-4540-85a2-45c1353ed9d2)
+[![Demo Video](https://github.com/prasanthjathu/toolbox/assets/81978724/6e0070df-f48f-4139-845a-a6419032fb72)](https://github.com/prasanthjathu/toolbox/assets/81978724/6e0070df-f48f-4139-845a-a6419032fb72)
+
+
 
 
 
