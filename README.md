@@ -50,12 +50,6 @@ cd <repository-directory>
 python KPToolBoxScanner.py example.com
 
 
-## Demo
-Demo of this project:
-(https://github.com/prasanthjathu/toolbox/assets/81978724/6e0070df-f48f-4139-845a-a6419032fb72)](https://github.com/prasanthjathu/toolbox/assets/81978724/6e0070df-f48f-4139-845a-a6419032fb72)
-
-
-
 
 
 
