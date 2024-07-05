@@ -7,6 +7,12 @@ KPToolBoxScanner est un outil de scan de sécurité qui automatise le processus 
 ## Auteur
 Kusalavan Prasanth
 
+## Étudiant
+Étudiant en première année de Master en cybersécurité à SUP DE VINCI.
+
+## Projet demandé par
+Ce projet a été demandé par Nathan Bramli de la société Cyna.
+
 ## Utilisation
 Pour exécuter le script, utilisez la commande suivante :
 ```bash
@@ -47,13 +53,10 @@ cd <repository-directory>
 ```
 3. Exécutez le script :
 ```bash
-python KPToolBoxScanner.py example.com
+python KPToolBoxScanner.py www.pepal.eu
+```
 
-
-
-
-
-
+---
 
 # KPToolBoxScanner v1.0
 
@@ -63,10 +66,16 @@ KPToolBoxScanner is a security scanning tool that automates the process of secur
 ## Author
 Kusalavan Prasanth
 
+## Student
+1st year Master student in Cybersecurity at SUP DE VINCI.
+
+## Project requested by
+This project was requested by Nathan Bramli from Cyna company.
+
 ## Usage
 To run the script, use the following command:
 ```bash
-python KPToolBoxScanner.py example.com
+python KPToolBoxScanner.py www.pepal.eu
 ```
 
 ## Requirements
@@ -104,3 +113,4 @@ cd <repository-directory>
 3. Run the script:
 ```bash
 python KPToolBoxScanner.py example.com
+```
